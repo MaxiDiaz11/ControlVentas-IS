@@ -1,4 +1,5 @@
 import React from "react";
+import ListadoOpciones from "../gestor/ListadoOpciones";
 
 const SideBar = () => {
     return (
@@ -8,7 +9,8 @@ const SideBar = () => {
             </h1>
             {/* <NuevoProyecto></NuevoProyecto> */}
             <div className="proyectos">
-                <h2>Gestión de ventas</h2>
+                <h2>Gestión de tienda</h2>
+                <ListadoOpciones></ListadoOpciones>
                 {/* <ListadoProyectos></ListadoProyectos> */}
             </div>
         </aside>
