@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import productoContext from '../../context/productos/productosContext';
 
-const Opcion = ({ opcion }) => {
+const Opcion = ({ opcion, tipo }) => {
   const producto = useContext(productoContext)
   const { mostrarGestorProductos } = producto
 
   const mostrarGestor = () => {
-    mostrarGestorProductos()
+    if(tipo ==="gestorProducto"){
+      mostrarGestorProductos()
+    }
   }
+  
   return (
     <button
       type="button"

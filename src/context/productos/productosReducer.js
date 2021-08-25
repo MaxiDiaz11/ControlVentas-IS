@@ -1,4 +1,4 @@
-import { ALTA_PRODUCTO, GESTOR_PRODUCTOS } from "../../types"
+import { ALTA_PRODUCTO, GESTOR_PRODUCTOS, BAJA_PRODUCTOS, MODIFICACION_PRODUCTOS } from "../../types"
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -11,7 +11,24 @@ export default (state, action) => {
         case ALTA_PRODUCTO:
             return {
                 ...state,
-                productoNuevo: true
+                productoNuevo: true,
+                gestorProductos: false
+            }
+        case BAJA_PRODUCTOS:
+            return {
+                ...state,
+                productoNuevo: false,
+                gestorProductos: false,
+                baja: true,
+                modificacion: false
+            }
+        case MODIFICACION_PRODUCTOS:
+            return {
+                ...state,
+                productoNuevo: false,
+                gestorProductos: false,
+                baja: false,
+                modificacion: true
             }
         default:
             return state;

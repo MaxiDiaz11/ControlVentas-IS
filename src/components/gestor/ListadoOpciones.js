@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useContext } from "react";
+import usuarioContext from '../../context/usuarios/usuarioContext';
 import Opcion from './Opcion';
 
 const ListadoOpciones = () => {
+    const user = useContext(usuarioContext)
+    const { tipo } = user
+
+    const mostrarMenu = () => {
+        if (tipo === "vendedor") return <Opcion opcion="Realizar venta" tipo="realizarVenta"></Opcion>
+        if (tipo === "administrador") return <Opcion opcion="Gestionar producto" tipo="gestorProducto"></Opcion>
+    }
+    
     return (
-        <div className="mt-1">
-            <Opcion opcion="Gestionar producto"></Opcion>
-            <Opcion opcion="Realizar venta"></Opcion>
+        <div>
+            {mostrarMenu()}
         </div>
     );
 }
