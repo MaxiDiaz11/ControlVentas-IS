@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import productoContext from '../../context/productos/productosContext';
 
 const OpcionProductos = ({ opcion, tipo }) => {
+  
   const producto = useContext(productoContext)
   const { mostrarAltaProducto, mostrarBajaProducto, mostrarModificacionProducto} = producto
 
