@@ -5,50 +5,74 @@ const ModificacionProducto = () => {
         <div>
             <h1>ModificacionProducto</h1>
             <form >
-                <div className="campo-form">
-                    <label htmlFor="nombre">Nombre</label>
+                <div>
+                        <input
+                            className="input-text-carga"
+                            type="text"
+                            name="Codigo"
+                            id="codigo"
+                            placeholder="Codigo del producto"
+                        />
+                        <button className="btn btn-primario"> Buscar </button>
+                </div>
+
+                 <div className="campo-form formulario-nuevo-proyecto">
+                    <label htmlFor="nombre">Descripcion</label>
                     <input
                         type="text"
-                        name="nombre"
-                        id="nombre"
-                        placeholder="Tu nombre"
-
-
+                        name="descripcion"
+                        id="descripcion"
+                        placeholder=""
                     />
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="legajo">Legajo</label>
+
+                <div className="campo-form formulario-nuevo-proyecto">
+                    <label htmlFor="nombre">Marca</label>
                     <input
-                        type="email"
-                        name="legajo"
-                        id="legajo"
-                        placeholder="Tu legajo"
-
-
+                        type="text"
+                        name="Marca"
+                        id="Marca"
+                        placeholder=""
                     />
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
 
-                        placeholder="Tu password"
+                <div className="campo-form select-text">
+                    <div className="input-text">
 
-                    />
+                        <label htmlFor="confirmar" className="margenes select">Costo</label>
+                        <input
+                            className="input-number"
+                            type="number"
+                            name="Costo"
+                            id="Costo"
+                            placeholder=""
+                        />
+                    </div>
+                    <div >
+                        <label htmlFor="confirmar" className="margenes select">Margen de ganancia</label>
+                        <input
+                            className="input-number"
+                            type="number"
+                            name="Margen de ganancia"
+                            id="Margen de ganancia"
+                            placeholder=""
+
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="confirmar"  className="direccion">Precio de venta</label>
+                        <input
+                            style={{margin: '5px'}}
+                            className="input-number"
+                            type="number"
+                            name="PrecioDeVenta"
+                            id="PrecioDeVenta"
+                            placeholder=""
+
+                        />
+                    </div>
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="confirmar"> Confirmar Password</label>
-                    <input
-                        type="password"
-                        name="confirmar"
-                        id="confirmar"
 
-                        placeholder="Repite tu password"
-
-                    />
-                </div>
                 <div className="campo-form">
                     <input
                         type="submit"
@@ -65,117 +89,6 @@ const ModificacionProducto = () => {
                 </div>
             </form>
         </div>
-        // <div className="formulario">
-        //     <h2 className="text-center mb-4" ><b>ALTA PRODUCTO</b></h2>
-        //     <div className="formulario form">
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>CODIGO</b></label>
-        //             <input className="input-text"
-        //                 type="text"
-        //                 placeholder="Codigo del producto"
-        //                 name="NombreRig"
-        //                 required
-        //             />
-        //         </div>
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>COSTO</b></label>
-        //             <input className="input-text"
-        //                 type="text"
-        //                 placeholder="Costo del producto"
-        //                 name="NombreRig"
-        //                 required
-        //             />
-        //         </div>
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>MARGEN DE GANANCIA</b></label>
-        //             <input className="input-text"
-        //                 type="text"
-        //                 placeholder="Margen de ganancia del producto"
-        //                 name="NombreRig"
-        //                 required
-        //             />
-        //         </div>
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>DESCRIPCION</b></label>
-        //             <input className="input-text"
-        //                 type="text"
-        //                 placeholder="Descripcion del producto"
-        //                 name="NombreRig"
-        //                 required
-        //             />
-        //         </div>
-
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>TALLE</b></label>
-        //             <select
-        //                 className="form-select"
-        //                 aria-label="Default select example"
-        //                 required
-        //             >
-        //                 <option key="0" value="0" >
-        //                     Seleccione un talle
-        //                 </option>
-        //                 <option key="1" value="1" >
-        //                     S
-        //                 </option>
-        //                 <option key="2" value="2" >
-        //                     M
-        //                 </option>
-        //                 <option key="3" value="3" >
-        //                     L
-        //                 </option>
-        //             </select>
-        //         </div>
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>MARCA</b></label>
-        //             <select
-        //                 className="form-select"
-        //                 aria-label="Default select example"
-        //                 required
-        //             >
-        //                 <option key="0" value="0" >
-        //                     Seleccione una marca
-        //                 </option>
-        //                 <option key="1" value="1" >
-        //                     Adidas
-        //                 </option>
-        //                 <option key="2" value="2" >
-        //                     Nike
-        //                 </option>
-        //                 <option key="3" value="3" >
-        //                     Puma
-        //                 </option>
-        //             </select>
-        //         </div>
-
-        //         <div className="campo-form">
-        //             <label className="campo-form label"><b>COLOR</b></label>
-        //             <select
-        //                 className="form-select"
-        //                 aria-label="Default select example"
-        //                 required
-        //             >
-        //                 <option key="0" value="0" >
-        //                     Seleccione un color
-        //                 </option>
-        //                 <option key="1" value="1" >
-        //                     rojo
-        //                 </option>
-        //                 <option key="2" value="2" >
-        //                     azul
-        //                 </option>
-        //                 <option key="3" value="3" >
-        //                     gris
-        //                 </option>
-        //             </select>
-        //         </div>
-        //     </div>
-        // </div>
     );
 }
 

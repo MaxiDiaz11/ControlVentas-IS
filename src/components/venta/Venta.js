@@ -35,7 +35,7 @@ const Venta = () => {
             <form >
                 <div className="input-text-carga" >
                     <div className="select-text campo-form ">
-                        <label htmlFor="nombre">Nombre del producto</label>
+                        <label htmlFor="nombre">Descripcion del producto</label>
                         <input
                             type="text"
                             name="nombre"
