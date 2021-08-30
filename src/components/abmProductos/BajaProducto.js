@@ -12,8 +12,6 @@ const BajaProducto = () => {
                         name="nombre"
                         id="nombre"
                         placeholder="Tu nombre"
-
-
                     />
                 </div>
                 <div className="campo-form">
