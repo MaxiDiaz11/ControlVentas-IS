@@ -11,10 +11,9 @@ const BajaProducto = () => {
                         type="text"
                         name="nombre"
                         id="nombre"
-                        placeholder="Tu nombre"
+                        placeholder="Codigo producto"
                     />
                     <button className="btn btn-primario"> Buscar </button>
-
                 </div>
                 <div className="campo-form formulario-nuevo-proyecto">
                     <label htmlFor="nombre">Descripcion</label>
@@ -32,19 +31,15 @@ const BajaProducto = () => {
                         name="marca"
                         id="marca"
                         placeholder=""
-
-
                     />
                 </div>
                 <div className="campo-form">
-                    <label htmlFor="password">Precio</label>
+                    <label>Precio</label>
                     <input
                         type="number"
                         name="precio"
                         id="precio"
-
                         placeholder=""
-
                     />
                 </div>
                 <div className="campo-form">
