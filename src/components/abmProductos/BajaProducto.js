@@ -5,45 +5,45 @@ const BajaProducto = () => {
         <div>
             <h1>Baja producto</h1>
             <form >
-                <div className="campo-form">
-                    <label htmlFor="nombre">Nombre</label>
+                <div>
                     <input
+                        className="input-text-carga"
                         type="text"
                         name="nombre"
                         id="nombre"
                         placeholder="Tu nombre"
                     />
+                    <button className="btn btn-primario"> Buscar </button>
+
+                </div>
+                <div className="campo-form formulario-nuevo-proyecto">
+                    <label htmlFor="nombre">Descripcion</label>
+                    <input
+                        type="text"
+                        name="descripcion"
+                        id="descripcion"
+                        placeholder=""
+                    />
                 </div>
                 <div className="campo-form">
-                    <label htmlFor="legajo">Legajo</label>
+                    <label htmlFor="legajo">Marca</label>
                     <input
                         type="email"
-                        name="legajo"
-                        id="legajo"
-                        placeholder="Tu legajo"
+                        name="marca"
+                        id="marca"
+                        placeholder=""
 
 
                     />
                 </div>
                 <div className="campo-form">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Precio</label>
                     <input
-                        type="password"
-                        name="password"
-                        id="password"
+                        type="number"
+                        name="precio"
+                        id="precio"
 
-                        placeholder="Tu password"
-
-                    />
-                </div>
-                <div className="campo-form">
-                    <label htmlFor="confirmar"> Confirmar Password</label>
-                    <input
-                        type="password"
-                        name="confirmar"
-                        id="confirmar"
-
-                        placeholder="Repite tu password"
+                        placeholder=""
 
                     />
                 </div>
@@ -51,7 +51,7 @@ const BajaProducto = () => {
                     <input
                         type="submit"
                         className="btn btn-primario btn-block"
-                        value="Registrar producto"
+                        value="Baja de producto"
                     />
                 </div>
                 <div>

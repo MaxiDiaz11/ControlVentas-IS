@@ -4,51 +4,78 @@ const AltaProducto = () => {
     return (
         <div>
             <h1>Alta producto</h1>
-            <form >
-                <div className="campo-form">
-                    <label htmlFor="nombre">Nombre</label>
+            <form>
+                <div className="select-text campo-form ">
+                    <label htmlFor="nombre">Descripcion del producto</label>
                     <input
                         type="text"
-                        name="nombre"
-                        id="nombre"
-                        placeholder="Tu nombre"
-
-
+                        name="descripcion"
+                        id="descripcion"
+                        placeholder=""
                     />
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="legajo">Legajo</label>
+                <div className="campo-form select-text ">
+                    <label htmlFor="nombre">Marca</label>
                     <input
-                        type="email"
-                        name="legajo"
-                        id="legajo"
-                        placeholder="Tu legajo"
-
-
+                        type="text"
+                        name="marca"
+                        id="marca"
+                        placeholder=""
                     />
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
 
-                        placeholder="Tu password"
-
-                    />
+                <div className="campo-form select-text">
+                    <label htmlFor="color" className="margenes select">Seleccione el color </label>
+                    <select className="select-text select" name="color" selected>
+                        <option value="value1" >Color</option>
+                    </select>
+                    <label htmlFor="talle" className="margenes select">Seleccione el talle </label>
+                    <select className="select-text select" name="talle" selected>
+                        <option value="value1" >Talle</option>
+                    </select>
+                    <label htmlFor="cantidad" className="margenes select">Cantidad </label>
+                    <select className="select-text select" name="Cantidad" selected>
+                        <option value="value1" >Cantidad</option>
+                    </select>
                 </div>
-                <div className="campo-form">
-                    <label htmlFor="confirmar"> Confirmar Password</label>
-                    <input
-                        type="password"
-                        name="confirmar"
-                        id="confirmar"
 
-                        placeholder="Repite tu password"
+                <div className="campo-form select-text">
+                    <div className="input-text">
 
-                    />
+                        <label htmlFor="confirmar" className="margenes select">Costo</label>
+                        <input
+                            className="input-number"
+                            type="number"
+                            name="Costo"
+                            id="Costo"
+                            placeholder=""
+                        />
+                    </div>
+                    <div >
+                        <label htmlFor="confirmar" className="margenes select">Margen de ganancia</label>
+                        <input
+                            className="input-number"
+                            type="number"
+                            name="Margen de ganancia"
+                            id="Margen de ganancia"
+                            placeholder=""
+
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="confirmar"  className="direccion">Precio de venta</label>
+                        <input
+                            style={{margin: '5px'}}
+                            className="input-number"
+                            type="number"
+                            name="PrecioDeVenta"
+                            id="PrecioDeVenta"
+                            placeholder=""
+
+                        />
+                    </div>
                 </div>
+
                 <div className="campo-form">
                     <input
                         type="submit"
