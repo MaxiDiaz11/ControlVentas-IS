@@ -7,7 +7,7 @@ import {
 
 const UsuarioState = (props) => {
     const initialState = {
-        tipo: "administrador",
+        tipo: "vendedor",
         usuario: "Maxi",
         autenticado: "",
     };

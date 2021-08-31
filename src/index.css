@@ -213,6 +213,10 @@ aside {
   width: 300px;
 }
 
+.input-number:disabled{
+  background-color: #ffffff;
+}
+
 .input-text-carga{
   padding: 1rem;
   border: none;
@@ -229,7 +233,7 @@ aside {
   font-size: 1.4;
   font-weight: 400;
   border-radius: 0.5rem;
-  border: none;
+  border-color: #cecece;
   transition: background-color 0.3s ease;
 }
 

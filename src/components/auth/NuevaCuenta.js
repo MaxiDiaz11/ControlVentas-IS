@@ -81,6 +81,15 @@ const NuevaCuenta = () => {
                             onChange={onChange}
                         />
                     </div>
+
+                    <div className="campo-form">
+                        <label htmlFor="tipo">Tipo de usuario</label>
+                        <select className="select-text select" name="tipo" selected>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+
                     <div className="campo-form">
                         <input
                             type="submit"

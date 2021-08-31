@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Login = () => {
     //state de empleado
@@ -10,6 +12,7 @@ const Login = () => {
 
     //extraer de empleado
     const { legajo, password } = empleado;
+
     const onChange = (e) => {
         setEmpleado({
             ...empleado,
@@ -21,8 +24,23 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         //validar que no haya campos vacios
+        if (legajo.trim() === '' || password.trim === '') return Swal.fire({
+            title: 'Error!',
+            text: 'Debe completar los campor requeridos.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
 
-        //pasarlo al action
+        //peticion
+        axios.post('', {
+            body: {
+                legajo: legajo,
+                password: password
+            }
+        }).then(r => {
+            console.log(r)
+        }).catch(e => console.log(e))
+
     };
 
     return (

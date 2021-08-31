@@ -20,7 +20,7 @@ const Venta = () => {
     const classes = useStyles();
     return (
         <div>
-                <h1>Venta</h1>
+            <h1>Venta</h1>
             <div>
                 <input
                     className="input-text-carga"
@@ -71,7 +71,6 @@ const Venta = () => {
 
                 <div className="campo-form select-text">
                     <div className="input-text">
-
                         <label htmlFor="confirmar" className="margenes"> Precio de venta</label>
                         <input
                             className="input-number"
@@ -79,6 +78,7 @@ const Venta = () => {
                             name="PrecioVenta"
                             id="PrecioVenta"
                             placeholder=""
+                            disabled
                         />
                     </div>
                     <div>
@@ -89,7 +89,7 @@ const Venta = () => {
                             name="IVA"
                             id="IVA"
                             placeholder=""
-
+                            disabled
                         />
                     </div>
                     <div className="direccion">
