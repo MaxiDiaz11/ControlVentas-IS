@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Enviroment } from "../../enviroment/enviroment-dev.js";
 
 const Login = () => {
     //state de empleado
@@ -30,18 +31,41 @@ const Login = () => {
             icon: 'error',
             confirmButtonText: 'OK'
         })
-
-        //peticion
-        axios.post('', {
-            body: {
-                legajo: legajo,
-                password: password
-            }
-        }).then(r => {
-            console.log(r)
-        }).catch(e => console.log(e))
-
+        
+       /*
+            */
+           autenticarUserApi(legajo,password)
     };
+
+    const autenticarUserApi = async (legajo,password) =>{
+        let body =  {
+            Legajo: Number(legajo),
+            Password: password
+        }
+        console.log(body)
+    //peticion
+        const response = await axios.post('/api/Users/AutenticarUsuario', body)
+        if(response.status === 200){
+            if(response.data.estaAutenticado){
+                guardarUsuarioActivo(response)
+            }
+        }
+      
+    }
+
+    const guardarUsuarioActivo =  (response) => {
+        // await autenticarUsuario({
+        //     tipo:response.data.tipoUsuario,
+        //     usuario:response.data.nombre,
+        //     autenticado: response.data.estaAutenticado,
+        //     id:response.data.id
+        // })
+        window.sessionStorage.setItem('tipo',response.data.tipoUsuario)
+        window.sessionStorage.setItem('nombre',response.data.nombre)
+        window.sessionStorage.setItem('autenticado',response.data.estaAutenticado)
+        window.sessionStorage.setItem('id',response.data.id)
+        window.location.href = Enviroment.urlFront + '/tienda'
+    }
 
     return (
         <div className="form-usuario">
