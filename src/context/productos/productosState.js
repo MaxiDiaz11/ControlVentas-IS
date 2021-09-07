@@ -14,7 +14,12 @@ const ProductoState = (props) => {
     gestorProductos: false,
     productoNuevo: false,
     modificacion: false,
-    baja: false
+    baja: false,
+    // descripcion: "",
+    // marca:"",
+    // color:"",
+    // talle:"",
+    // cantidad:""
   };
 
   //crear dispatch

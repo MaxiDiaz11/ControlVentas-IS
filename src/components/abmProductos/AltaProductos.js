@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AltaProducto = () => {
+    const [producto, setProducto] = useState({
+        descripcion: "",
+        marca: "",
+        color: "",
+        talle: "",
+        cantidad: "",
+        costo: 0,
+        margen: 0,
+        precio: 0
+    })
+
+    const onChange = (e) => {
+        setProducto({
+            ...producto,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+       
+    };
+
+
     return (
         <div>
             <h1>Alta producto</h1>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className="select-text campo-form ">
                     <label htmlFor="nombre">Descripcion del producto</label>
                     <input
@@ -12,6 +36,7 @@ const AltaProducto = () => {
                         name="descripcion"
                         id="descripcion"
                         placeholder=""
+                        onChange={onChange}
                     />
                 </div>
                 <div className="campo-form select-text ">
@@ -63,9 +88,9 @@ const AltaProducto = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="confirmar"  className="direccion">Precio de venta</label>
+                        <label htmlFor="confirmar" className="direccion">Precio de venta</label>
                         <input
-                            style={{margin: '5px'}}
+                            style={{ margin: '5px' }}
                             className="input-number"
                             type="number"
                             name="PrecioDeVenta"

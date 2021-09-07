@@ -9,7 +9,9 @@ import BajaProducto from '../abmProductos/BajaProducto';
 import ModificacionProducto from '../abmProductos/ModificacionProducto';
 import Venta from '../venta/Venta';
 
-const Gestor = () => {
+import { Redirect } from "react-router-dom";
+
+const Gestor = ({ authorized }) => {
     const producto = useContext(productoContext)
     const { gestorProductos, productoNuevo, baja, modificacion } = producto
 
@@ -24,6 +26,9 @@ const Gestor = () => {
         if (nuevaVenta) return <Venta></Venta>
     }
 
+    if(!authorized){
+        return <Redirect to='/'></Redirect>
+    }
     return (
         <div className="contenedor-app">
             <SideBar></SideBar>

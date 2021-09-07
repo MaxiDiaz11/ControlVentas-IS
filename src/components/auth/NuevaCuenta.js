@@ -7,11 +7,13 @@ const NuevaCuenta = () => {
         nombre: "",
         legajo: "",
         password: "",
-        confirmar: ""
+        confirmar: "",
+        tipo: ""
     });
 
     //extraer de usuario
-    const { nombre, legajo, password, confirmar } = empleado;
+    const { nombre, legajo, password, confirmar, tipo } = empleado;
+
     const onChange = (e) => {
         setEmpleado({
             ...empleado,
@@ -84,9 +86,9 @@ const NuevaCuenta = () => {
 
                     <div className="campo-form">
                         <label htmlFor="tipo">Tipo de usuario</label>
-                        <select className="select-text select" name="tipo" selected>
-                            <option value="vendedor">Vendedor</option>
-                            <option value="administrador">Administrador</option>
+                        <select className="select-text select" selected>
+                            <option value={tipo} name="tipo" onChange={onChange}>Vendedor</option>
+                            <option value={tipo} name="tipo" onChange={onChange}>Administrador</option>
                         </select>
                     </div>
 

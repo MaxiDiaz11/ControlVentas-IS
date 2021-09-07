@@ -16,13 +16,12 @@ function App() {
             <Switch>
               <Route exact path="/" component={Login}></Route>
               <Route exact path="/nueva-cuenta" component={NuevaCuenta}></Route>
-              <Route exact path="/tienda" component={Gestor}></Route>
+              <Route exact path="/tienda" component={() => <Gestor authorized={true} />}/>
             </Switch>
           </Router>
         </ProductoState>
       </VentaState>
     </UsuarioState>
-
   );
 }
 
