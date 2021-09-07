@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Enviroment } from "../../enviroment/enviroment-dev.js";
 
 const Login = () => {
     //state de empleado
@@ -46,7 +47,19 @@ const Login = () => {
         //     console.log(r)
         // }).catch(e => console.log(e))
 
-    };
+    const guardarUsuarioActivo =  (response) => {
+        // await autenticarUsuario({
+        //     tipo:response.data.tipoUsuario,
+        //     usuario:response.data.nombre,
+        //     autenticado: response.data.estaAutenticado,
+        //     id:response.data.id
+        // })
+        window.sessionStorage.setItem('tipo',response.data.tipoUsuario)
+        window.sessionStorage.setItem('nombre',response.data.nombre)
+        window.sessionStorage.setItem('autenticado',response.data.estaAutenticado)
+        window.sessionStorage.setItem('id',response.data.id)
+        window.location.href = Enviroment.urlFront + '/tienda'
+    }
 
     return (
         <div className="form-usuario">

@@ -7,8 +7,8 @@ const ListadoOpciones = () => {
     const { tipo } = user
 
     const mostrarMenu = () => {
-        if (tipo === "vendedor") return <Opcion opcion="Realizar venta" tipo="realizarVenta"></Opcion>
-        if (tipo === "administrador") return <Opcion opcion="Gestionar producto" tipo="gestorProducto"></Opcion>
+        if (window.sessionStorage.getItem('tipo') === "vendedor") return <Opcion opcion="Realizar venta" tipo="realizarVenta"></Opcion>
+        if (window.sessionStorage.getItem('tipo')  === "administrativo") return <Opcion opcion="Gestionar producto" tipo="gestorProducto"></Opcion>
     }
     
     return (

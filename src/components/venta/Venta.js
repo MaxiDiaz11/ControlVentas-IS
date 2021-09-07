@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import axios from 'axios';
 
 const useStyles = makeStyles({
     table: {
@@ -17,6 +18,37 @@ const useStyles = makeStyles({
 });
 
 const Venta = () => {
+
+    const [codigo,setCodigo] = useState('')
+    const [descripcion,setDescripcion] = useState('')
+    const [marca,setMarca] = useState('')
+    const [stockOriginal,setStockOriginal] = useState([])
+    const [stockFiltrado,setStockFiltrado] = useState([])
+    
+    const filtrarColores = () => {
+        let colores = stockOriginal.map(stock => {
+            return stock.color
+        })
+        console.log(colores)
+        let coloresSinRepeticion = colores.filter((item,index)=>{
+            return colores.indexOf(item) === index;
+          })
+        console.log(coloresSinRepeticion)
+    }
+
+    const GetProductoByCodigo = async () => {
+        let data = {
+            CodigoProducto : codigo
+        }
+        const response = await axios.get('/api/Productos/GetProductoById',{params:data})
+        let producto = response.data.producto
+        setDescripcion(producto.descripcion)
+        setMarca(producto.marca.descripcion)
+        setStockOriginal(producto.stocks)
+        setStockFiltrado(producto.stocks)
+        filtrarColores()
+    }
+    
     const classes = useStyles();
     return (
         <div>
@@ -28,8 +60,11 @@ const Venta = () => {
                     name="Codigo"
                     id="codigo"
                     placeholder="Codigo del producto"
+                    onChange={(e) => {
+                        setCodigo(e.target.value);
+                    }} 
                 />
-                <button className="btn btn-primario"> Buscar </button>
+                <button className="btn btn-primario" onClick={GetProductoByCodigo}> Buscar </button>
 
             </div>
             <form >
@@ -41,6 +76,7 @@ const Venta = () => {
                             name="nombre"
                             id="nombre"
                             placeholder=""
+                            value={descripcion}
                         />
                     </div>
                     <div className="campo-form select-text ">
@@ -50,6 +86,7 @@ const Venta = () => {
                             name="marca"
                             id="marca"
                             placeholder=""
+                            value={marca}
                         />
                     </div>
                 </div>
@@ -57,7 +94,9 @@ const Venta = () => {
                 <div className="campo-form select-text">
                     <label htmlFor="color" className="margenes select">Seleccione el color </label>
                     <select className="select-text select" name="color" selected>
-                        <option value="value1" >Color</option>
+                        {stockOriginal.map(stock => {
+                            return <option key={stock.color.id} value={stock.color.id}>{stock.color.descripcion}</option>
+                        })}
                     </select>
                     <label htmlFor="talle" className="margenes select">Seleccione el talle </label>
                     <select className="select-text select" name="talle" selected>
