@@ -9,9 +9,9 @@ import {
 const UsuarioState = (props) => {
     const initialState = {
         id: null,
-        tipo: "administrador",
-        usuario: "",
-        autenticado: false,
+        tipo: "",
+        nombreUsuario: "",
+        autorizado: false,
     };
 
     //crear dispatch
@@ -36,8 +36,8 @@ const UsuarioState = (props) => {
         <usuarioContext.Provider
             value={{
                 tipo: state.tipo,
-                usuario: state.usuario,
-                autenticado: state.autenticado,
+                nombreUsuario: state.nombreUsuario,
+                autorizado: state.autorizado,
                 cerrarSesion,
                 autenticarUsuario
             }}

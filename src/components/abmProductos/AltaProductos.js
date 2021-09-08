@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-
-const AltaProducto = () => {
-    const [producto, setProducto] = useState({
-        descripcion: "",
-        marca: "",
-        color: "",
-        talle: "",
-        cantidad: "",
-        costo: 0,
-        margen: 0,
-        precio: 0
-    })
-
-    const onChange = (e) => {
-        setProducto({
-            ...producto,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-       
-    };
-
-=======
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -86,22 +58,10 @@ const AltaProducto = () => {
         const response = await axios.post('/api/Productos/CreateProducto',body)
         console.log(response)
     }
->>>>>>> 8396984e28302015127705e3861e27ef694eee17
 
     return (
         <div>
             <h1>Alta producto</h1>
-<<<<<<< HEAD
-            <form onSubmit={onSubmit}>
-                <div className="select-text campo-form ">
-                    <label htmlFor="nombre">Descripcion del producto</label>
-                    <input
-                        type="text"
-                        name="descripcion"
-                        id="descripcion"
-                        placeholder=""
-                        onChange={onChange}
-=======
             <form>
             <div className="select-text campo-form ">
                     <label htmlFor="codigo">Codigo del producto</label>
@@ -113,7 +73,6 @@ const AltaProducto = () => {
                         onChange={(e) => {
                             setCodigo(e.target.value);
                         }} 
->>>>>>> 8396984e28302015127705e3861e27ef694eee17
                     />
                 </div>
                 <div className="select-text campo-form ">
@@ -165,7 +124,7 @@ const AltaProducto = () => {
                 <div className="campo-form select-text">
                     <div className="input-text">
 
-                        <label htmlFor="confirmar" /*className="margenes select"*/>Costo</label>
+                        <label htmlFor="confirmar">Costo</label>
                         <input
                             className="input-number"
                             type="number"
@@ -177,7 +136,7 @@ const AltaProducto = () => {
                         />
                     </div>
                     <div className="input-text">
-                        <label htmlFor="confirmar" /*className="margenes select"*/ >Margen de ganancia (%)</label>
+                        <label htmlFor="confirmar">Margen de ganancia (%)</label>
                         <input
                             className="input-number"
                             type="number"
@@ -188,16 +147,9 @@ const AltaProducto = () => {
 
                         />
                     </div>
-<<<<<<< HEAD
-                    <div>
-                        <label htmlFor="confirmar" className="direccion">Precio de venta</label>
-                        <input
-                            style={{ margin: '5px' }}
-=======
                     <div className="input-text">
-                        <label htmlFor="confirmar"  /*className="direccion"*/>Precio de venta</label>
+                        <label htmlFor="confirmar">Precio de venta</label>
                         <input
->>>>>>> 8396984e28302015127705e3861e27ef694eee17
                             className="input-number"
                             type="number"
                             name="precioFinal"

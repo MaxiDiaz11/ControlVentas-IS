@@ -8,11 +8,14 @@ const NuevaCuenta = () => {
         legajo: "",
         password: "",
         confirmar: "",
-        tipo: ""
     });
 
+    const [tipoEmpleado, setTipoEmpleado] = useState({
+        tipo: ""
+    })
+
     //extraer de usuario
-    const { nombre, legajo, password, confirmar, tipo } = empleado;
+    const { nombre, legajo, password, confirmar } = empleado;
 
     const onChange = (e) => {
         setEmpleado({
@@ -86,9 +89,15 @@ const NuevaCuenta = () => {
 
                     <div className="campo-form">
                         <label htmlFor="tipo">Tipo de usuario</label>
-                        <select className="select-text select" selected>
-                            <option value={tipo} name="tipo" onChange={onChange}>Vendedor</option>
-                            <option value={tipo} name="tipo" onChange={onChange}>Administrador</option>
+                        <select
+                            className="select-text select"
+                            selected
+                            onChange={(e) => {
+                                setTipoEmpleado(e.target.value)
+                            }}
+                            value={tipoEmpleado}>
+                            <option value="vendedor" >Vendedor</option>
+                            <option value="administrador" >Administrador</option>
                         </select>
                     </div>
 

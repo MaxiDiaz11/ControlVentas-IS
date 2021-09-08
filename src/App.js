@@ -16,7 +16,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Login}></Route>
               <Route exact path="/nueva-cuenta" component={NuevaCuenta}></Route>
-              <Route exact path="/tienda" component={() => <Gestor authorized={true} />}/>
+              <Route exact path="/tienda" component={Gestor} />
             </Switch>
           </Router>
         </ProductoState>

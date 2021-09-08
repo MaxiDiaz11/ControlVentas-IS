@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import usuarioContext from '../../context/usuarios/usuarioContext';
 import { Link, useHistory } from "react-router-dom";
-import axios from 'axios'
+// import axios from 'axios'
 import Swal from 'sweetalert2'
-import { Enviroment } from "../../enviroment/enviroment-dev.js";
 
 const Login = () => {
+
+    const usr = useContext(usuarioContext);
+
+    const { autenticarUsuario } = usr;
+
     //state de empleado
     const [empleado, setEmpleado] = useState({
         legajo: "",
@@ -12,8 +17,6 @@ const Login = () => {
     });
 
     let history = useHistory();
-    
-
 
     //extraer de empleado
     const { legajo, password } = empleado;
@@ -28,37 +31,37 @@ const Login = () => {
     //cuando el empleado quiere iniciar sesion
     const onSubmit = (e) => {
         e.preventDefault();
-        history.push('/tienda')
-        // //validar que no haya campos vacios
-        // if (legajo.trim() === '' || password.trim === '') return Swal.fire({
-        //     title: 'Error!',
-        //     text: 'Debe completar los campos requeridos.',
-        //     icon: 'error',
-        //     confirmButtonText: 'OK'
-        // })
 
-        // //peticion
-        // axios.post('', {
-        //     body: {
-        //         legajo: legajo,
-        //         password: password
-        //     }
-        // }).then(r => {
-        //     console.log(r)
-        // }).catch(e => console.log(e))
+        //validar que no haya campos vacios
+        if (legajo.trim() === '' || password.trim === '') return Swal.fire({
+            title: 'Error!',
+            text: 'Debe completar los campos requeridos.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
+        else {
+            //peticion
+            // axios.post('', {
+            //     body: {
+            //         legajo: legajo,
+            //         password: password
+            //     }
+            // }).then(r => {
+            //     console.log(r)
+            // }).catch(e => console.log(e))
 
-    const guardarUsuarioActivo =  (response) => {
-        // await autenticarUsuario({
-        //     tipo:response.data.tipoUsuario,
-        //     usuario:response.data.nombre,
-        //     autenticado: response.data.estaAutenticado,
-        //     id:response.data.id
-        // })
-        window.sessionStorage.setItem('tipo',response.data.tipoUsuario)
-        window.sessionStorage.setItem('nombre',response.data.nombre)
-        window.sessionStorage.setItem('autenticado',response.data.estaAutenticado)
-        window.sessionStorage.setItem('id',response.data.id)
-        window.location.href = Enviroment.urlFront + '/tienda'
+
+            if (legajo === 'maxi' || password === '123') {
+                const usuario = {
+                    tipo: "vendedor",
+                    nombreUsuario: "maxi",
+                    autorizado: true,
+                    id: 1
+                }
+                autenticarUsuario(usuario)
+                history.push('/tienda')
+            }
+        }
     }
 
     return (
@@ -93,7 +96,7 @@ const Login = () => {
                             type="submit"
                             className="btn btn-primario btn-block"
                             value="Iniciar Sesión"
-                            // onClick={()=> {history.push('/tienda')}}
+                            onClick={onSubmit}
                         />
                     </div>
                 </form>
@@ -104,6 +107,6 @@ const Login = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Login;
