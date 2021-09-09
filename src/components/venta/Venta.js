@@ -19,6 +19,9 @@ const useStyles = makeStyles({
 
 const Venta = () => {
 
+    //TODO PASAR TODO ESTO A CONTEXT
+
+    
     const [codigo,setCodigo] = useState('')
     const [descripcion,setDescripcion] = useState('')
     const [marca,setMarca] = useState('')

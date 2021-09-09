@@ -1,4 +1,11 @@
-import { ALTA_PRODUCTO, GESTOR_PRODUCTOS, BAJA_PRODUCTOS, MODIFICACION_PRODUCTOS } from "../../types"
+import {
+    ALTA_PRODUCTO,
+    GESTOR_PRODUCTOS,
+    BAJA_PRODUCTOS,
+    MODIFICACION_PRODUCTOS,
+    SET_MARCAS,
+    SET_RUBROS
+} from "../../types"
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -30,6 +37,17 @@ export default (state, action) => {
                 baja: false,
                 modificacion: true
             }
+        case SET_MARCAS:
+            return {
+                ...state,
+                marcas: action.payload
+            }
+        case SET_RUBROS: {
+            return {
+                ...state,
+                rubros: action.payload
+            }
+        }
         default:
             return state;
     }

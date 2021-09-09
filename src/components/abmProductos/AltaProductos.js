@@ -1,78 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import productoContext from '../../context/productos/productosContext';
 
 const AltaProducto = () => {
 
-    const [marcas,setMarca] = useState([])
-    const [rubros,setRubros] = useState([])
-    const [marcaSelected,setMarcaSelected] = useState(0)
-    const [rubroSelected,setRubroSelected] = useState(0)
-    const [descripcion,setDescripcion] = useState('')
-    const [codigo,setCodigo] = useState('')
+    // useEffect(() => {
+    //     getMarcas()
+    //     getRubros()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
+
+    const productoState = useContext(productoContext);
+    let { crearProducto, marcas, rubros} = productoState;
+
+    // //MARCAS Y RUBROS
+    // const getMarcas = async () => {
+    //     const response = await axios.get('/api/Marcas/GetMarcas')
+    //     setMarcas(response.data.marcas)
+    // }
+    // const getRubros = async () => {
+    //     const response = await axios.get('/api/Rubros/GetRubros')
+    //     setRubros(response.data.rubros)
+    // }
+
+    const [marcaSeleccionada, setMarcaSeleccionada] = useState(0);
+    const [rubroSeleccionada, setRubroSeleccionada] = useState(0);
+
+    //VALORES DE COSTRO Y GANANCIAS
     const [valores, setValores] = useState({
         costo: 0,
         margenGanancia: 0,
     })
-    
-    const [precioFinal,setPrecioFinal] = useState(0)
-    const {costo,margenGanancia} = valores
+    const { costo, margenGanancia } = valores
 
+    //PRODUCTO
+    const [producto, setProducto] = useState({
+        codigo: "",
+        descripcion: "",
+        precioDeVenta: 0,
+        marca: "",
+        rubro: ""
+    })
 
-    const onChange = (e) => {
-       setValores({
-           ...valores,
-           [e.target.name] : Number(e.target.value)
-       })
-       let netoAgravado = costo + costo * margenGanancia
-       let iva = netoAgravado * 0.21
-       setPrecioFinal((netoAgravado + iva).toFixed(2))
-       //329
+    const onChangeProducto = (e) => {
+        setValores({
+            ...valores,
+            [e.target.name]: Number(e.target.value)
+        })
+
+        let netoAgravado = costo + costo * margenGanancia
+        let iva = netoAgravado * 0.21
+
+        setProducto({
+            ...producto,
+            [e.target.name]: e.target.value,
+            precioDeVenta: ((netoAgravado + iva).toFixed(2)),
+            marca: marcaSeleccionada,
+            rubro: rubroSeleccionada
+        })
     };
 
-
-    useEffect( () => {
-       getMarcas()
-       getRubros()
-    },[])
-
-    const getMarcas = async () => {
-        const response = await axios.get('/api/Marcas/GetMarcas')
-        setMarca(response.data.marcas)
+    const crearNuevoProducto = () => {
+        crearProducto(producto)
     }
 
-    
-    const getRubros = async () => {
-        const response = await axios.get('/api/Rubros/GetRubros')
-        setRubros(response.data.rubros)
-    }
-
-    const CrearProducto = async () => {
-        let body = {
-            CodigoProducto : codigo,
-            Descripcion : descripcion,
-            Costo: costo,
-            MargenGanancia: margenGanancia,
-            IdMarca: Number(marcaSelected),
-            IdRubro: Number(rubroSelected)
-        }
-        const response = await axios.post('/api/Productos/CreateProducto',body)
-        console.log(response)
-    }
+    // const CrearProducto = async () => {
+    //     let body = {
+    //         CodigoProducto: codigo,
+    //         Descripcion: descripcion,
+    //         Costo: costo,
+    //         MargenGanancia: margenGanancia,
+    //         IdMarca: Number(marcaSelected),
+    //         IdRubro: Number(rubroSelected)
+    //     }
+    //     const response = await axios.post('/api/Productos/CreateProducto', body)
+    //     console.log(response)
+    // }
 
     return (
         <div>
             <h1>Alta producto</h1>
             <form>
-            <div className="select-text campo-form ">
+                <div className="select-text campo-form ">
                     <label htmlFor="codigo">Codigo del producto</label>
                     <input
                         type="text"
                         name="codigo"
                         id="codigo"
                         placeholder="Ingrese el codigo"
-                        onChange={(e) => {
-                            setCodigo(e.target.value);
-                        }} 
+                        onChange={onChangeProducto}
                     />
                 </div>
                 <div className="select-text campo-form ">
@@ -82,25 +97,23 @@ const AltaProducto = () => {
                         name="descripcion"
                         id="descripcion"
                         placeholder="Ingrese la descripcion"
-                        onChange={(e) => {
-                            setDescripcion(e.target.value);
-                            }} 
+                        onChange={onChangeProducto}
                     />
                 </div>
 
                 <div className="campo-form select-text">
-                   
+
                     <label htmlFor="rubro" className="margenes select">Seleccione el rubro </label>
-                    <select 
-                    className="select-text select"
-                     name="rubro"
-                    onChange={(e) => {
-                        setRubroSelected(e.target.value);
-                        }} 
-                     placeholder="Rubro">
+                    <select
+                        className="select-text select"
+                        name="rubro"
+                        onChange={(e) => {
+                            setRubroSeleccionada(e.target.value);
+                        }}
+                        placeholder="Rubro">
                         <option value={null}>Rubro</option>
                         {rubros.map(m => {
-                           return <option value={m.id} key={m.id}>{m.descripcion}</option>
+                            return <option value={m.id} key={m.id}>{m.descripcion}</option>
                         })}
                     </select>
 
@@ -111,12 +124,12 @@ const AltaProducto = () => {
                         placeholder="Marca"
                         className="select-text select"
                         onChange={(e) => {
-                            setMarcaSelected(e.target.value);
-                        }} 
+                            setMarcaSeleccionada(e.target.value);
+                        }}
                     >
                         <option value={null}>Marca</option>
                         {marcas.map(m => {
-                           return <option value={m.id} key={m.id}>{m.descripcion}</option>
+                            return <option value={m.id} key={m.id}>{m.descripcion}</option>
                         })}
                     </select>
                 </div>
@@ -131,7 +144,7 @@ const AltaProducto = () => {
                             name="costo"
                             id="costo"
                             placeholder=""
-                            onChange={onChange}
+                            onChange={onChangeProducto}
 
                         />
                     </div>
@@ -143,7 +156,7 @@ const AltaProducto = () => {
                             name="margenGanancia"
                             id="margenGanancia"
                             placeholder=""
-                            onChange={onChange}
+                            onChange={onChangeProducto}
 
                         />
                     </div>
@@ -155,7 +168,7 @@ const AltaProducto = () => {
                             name="precioFinal"
                             id="precioFinal"
                             placeholder=""
-                            value={precioFinal}
+                            value={producto.precioDeVenta}
                             disabled
                         />
                     </div>
@@ -166,7 +179,7 @@ const AltaProducto = () => {
                         type="button"
                         className="btn btn-primario btn-block"
                         value="Registrar producto"
-                        onClick={CrearProducto}
+                        onClick={() => crearNuevoProducto()}
                     />
                 </div>
                 <div>
@@ -178,7 +191,7 @@ const AltaProducto = () => {
                 </div>
             </form>
         </div>
-        
+
     );
 }
 

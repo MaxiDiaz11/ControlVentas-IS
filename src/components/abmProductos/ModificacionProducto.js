@@ -6,17 +6,17 @@ const ModificacionProducto = () => {
             <h1>ModificacionProducto</h1>
             <form >
                 <div>
-                        <input
-                            className="input-text-carga"
-                            type="text"
-                            name="Codigo"
-                            id="codigo"
-                            placeholder="Codigo del producto"
-                        />
-                        <button className="btn btn-primario"> Buscar </button>
+                    <input
+                        className="input-text-carga"
+                        type="text"
+                        name="Codigo"
+                        id="codigo"
+                        placeholder="Codigo del producto"
+                    />
+                    <button className="btn btn-primario">Buscar</button>
                 </div>
 
-                 <div className="campo-form formulario-nuevo-proyecto">
+                <div className="campo-form formulario-nuevo-proyecto">
                     <label htmlFor="nombre">Descripcion</label>
                     <input
                         type="text"
@@ -60,9 +60,9 @@ const ModificacionProducto = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="confirmar"  className="direccion">Precio de venta</label>
+                        <label htmlFor="confirmar" className="direccion">Precio de venta</label>
                         <input
-                            style={{margin: '5px'}}
+                            style={{ margin: '5px' }}
                             className="input-number"
                             type="number"
                             name="PrecioDeVenta"

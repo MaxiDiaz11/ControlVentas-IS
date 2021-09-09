@@ -5,9 +5,11 @@ import {
   ALTA_PRODUCTO,
   GESTOR_PRODUCTOS,
   BAJA_PRODUCTOS,
-  MODIFICACION_PRODUCTOS
+  MODIFICACION_PRODUCTOS,
+  CREAR_PRODUCTO,
+  SET_MARCAS,
+  SET_RUBROS
 } from "../../types"
-
 
 const ProductoState = (props) => {
   const initialState = {
@@ -15,11 +17,9 @@ const ProductoState = (props) => {
     productoNuevo: false,
     modificacion: false,
     baja: false,
-    // descripcion: "",
-    // marca:"",
-    // color:"",
-    // talle:"",
-    // cantidad:""
+    producto: {},
+    marcas: [],
+    rubros: [],
   };
 
   //crear dispatch
@@ -50,6 +50,26 @@ const ProductoState = (props) => {
     })
   }
 
+  const crearProducto = (producto) => {
+    dispatch({
+      type: CREAR_PRODUCTO,
+      payload: producto
+    })
+  }
+
+  const setMarcas = (marcas) => {
+    dispatch({
+      type: SET_MARCAS,
+      payload: marcas
+    })
+  }
+  const setRubros = (rubros) => {
+    dispatch({
+      type: SET_RUBROS,
+      payload: rubros
+    })
+  }
+  
   return (
     <productoContext.Provider
       value={{
@@ -57,10 +77,16 @@ const ProductoState = (props) => {
         productoNuevo: state.productoNuevo,
         modificacion: state.modificacion,
         baja: state.baja,
+        producto: state.producto,
+        marcas: state.marcas,
+        rubros: state.rubros,
         mostrarGestorProductos,
         mostrarAltaProducto,
         mostrarBajaProducto,
-        mostrarModificacionProducto
+        mostrarModificacionProducto,
+        crearProducto,
+        setRubros,
+        setMarcas
       }}
     >
       {props.children}

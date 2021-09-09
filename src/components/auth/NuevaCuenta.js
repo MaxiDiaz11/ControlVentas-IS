@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NuevaCuenta = () => {
-    //state de empleado
+
+    //TODO Verificar este componente
+
+    let history = useHistory();
+
     const [empleado, setEmpleado] = useState({
         nombre: "",
         legajo: "",
         password: "",
         confirmar: "",
     });
-
     const [tipoEmpleado, setTipoEmpleado] = useState({
         tipo: ""
     })
 
-    //extraer de usuario
     const { nombre, legajo, password, confirmar } = empleado;
 
     const onChange = (e) => {
@@ -31,10 +33,10 @@ const NuevaCuenta = () => {
         //validar que no haya campos vacios
 
         //password minimo de 6 caracteres
-
         //igualdad de passwords
-
+        
         //pasarlo al action
+        history.push('/')
     };
 
     return (
